@@ -1,0 +1,40 @@
+.pageHeading {
+    transition: 1s ease-in-out;
+    display: flex;
+    position: absolute;
+    z-index: 1000;
+    margin-left: 50vw;
+    margin-top: 50vh;
+    transform: translateX(-50%) translateY(-50%);
+    font-size: 40px;
+    color: black;
+    &InNav {
+      color: white;
+      mix-blend-mode: difference;
+      transition: 1s ease-in-out;
+      font-size: 20px;
+      margin-left: 100px;
+      margin-top: 50px;
+      // transform: translateX(0%) translateY(0%);
+      .pageHeading__first {
+        font-size: inherit;
+      }
+      .pageHeading__last {
+        font-size: inherit;
+        overflow: hidden;
+        max-width: 0;
+      }
+      .pageHeading__last.first {
+        margin-right: 0;
+      }
+    }
+    
+    &__last {
+      overflow: hidden;
+      transition: max-width .5s ease-in-out;
+      max-width: 200px;
+    }
+    &__last.first {
+      margin-right: 10px;
+    }
+  }

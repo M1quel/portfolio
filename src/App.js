@@ -1,23 +1,37 @@
+import { Link, navigate, Router } from '@reach/router';
+import { useEffect, useState } from 'react';
 import './App.scss';
+import Info from './components/info/Info';
+import Pageheading from './components/PageHeading';
+import Cases from "./components/cases/Cases";
 
 function App() {
+  var [fullscreen, setFullscreen] = useState(false);
+  var [section, setSection] = useState("")
+
+  useEffect(function () {
+    navigate("/")
+  }, [])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main className="app">
+      <Pageheading 
+        state={{fullscreen, setFullscreen}}
+        sectionClass={{section, setSection}}
+      />
+
+      <Info 
+      state={{fullscreen, setFullscreen}}
+      section={{section, setSection}}
+      />
+      <Cases 
+      state={{fullscreen, setFullscreen}} 
+      section={{section, setSection}}
+      />
+      <div>
+
+      </div>
+    </main>
+    
   );
 }
 
