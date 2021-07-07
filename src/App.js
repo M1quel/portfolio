@@ -1,36 +1,21 @@
-import { Link, navigate, Router } from '@reach/router';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import './App.scss';
-import Info from './components/info/Info';
-import Pageheading from './components/PageHeading';
-import Cases from "./components/cases/Cases";
-
+import Heading from "./components/heading/Heading";
+import hoverMainSections from './helperFunctions/hoverMainSections.js';
 function App() {
-  var [fullscreen, setFullscreen] = useState(false);
-  var [section, setSection] = useState("")
-
-  useEffect(function () {
-    navigate("/")
-  }, [])
   return (
-    <main className="app">
-      <Pageheading 
-        state={{fullscreen, setFullscreen}}
-        sectionClass={{section, setSection}}
-      />
-
-      <Info 
-      state={{fullscreen, setFullscreen}}
-      section={{section, setSection}}
-      />
-      <Cases 
-      state={{fullscreen, setFullscreen}} 
-      section={{section, setSection}}
-      />
-      <div>
-
-      </div>
-    </main>
+    <div className="app">
+      <Heading/>
+        <div onMouseOver={() => {hoverMainSections.cv()}} className="mainSection mainSection__cv">
+          <h1>CV</h1>
+        </div>
+        <div onMouseOver={() => {hoverMainSections.contact()}} className="mainSection mainSection__contact">
+          <h1>Contact</h1>
+        </div>
+        <div onMouseOver={() => {hoverMainSections.projects()}} className="mainSection mainSection__projects">
+          <h1>Projects</h1>
+        </div>
+    </div>
     
   );
 }
