@@ -14,9 +14,19 @@
         align-items: center;
 
         &__siteTitle {
-            font-size: 80px;
+            font-size: 60px;
+            display: flex;
+
+            .minimize {
+                overflow: hidden;
+                display: block;
+                &:first-of-type {
+                    margin-right: 20px;
+                }
+            }
         }
         &__seperator {
+            display: block;
             margin-bottom: 10px;
             width: 500px;
             height: 5px;
