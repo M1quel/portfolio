@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './App.scss';
+import Cv from './components/CV/CV';
 import Landing from './components/landing/Landing';
 import Scroller from "./components/scroller/scroller";
 function App() {
@@ -9,6 +10,7 @@ function App() {
     <>
       <Scroller setState={setScrollPosition}/>
       <Landing state={scrollPosition}/>
+      {/* <Cv/> */}
     </>
   );
 }

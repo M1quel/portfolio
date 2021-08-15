@@ -1,0 +1,25 @@
+.cv {
+    display: none;
+    background-color: red;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &Inner {
+        display: grid;
+        grid-template-columns: 30vw min-content 30vw;
+        align-items: center;
+        gap: 20px;
+        justify-content: center;
+
+
+        .cvInner__profile {
+            height: 30vw;
+            width: 100%;
+            border: 3px solid black;
+            object-fit: cover;
+        }
+
+    }
+}
