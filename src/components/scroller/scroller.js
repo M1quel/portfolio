@@ -7,7 +7,7 @@ export default function Scroller(scrollState) {
     useEffect(function () {
         const outer = scroll.current;
         const inner = outer.querySelector(".scrollInner");
-        outer.addEventListener("scroll", function () {
+        document.addEventListener("scroll", function () {
             let rect = inner.getBoundingClientRect();
             scrollState.setState(rect.top * -1)
         })

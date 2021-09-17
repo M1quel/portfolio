@@ -1,0 +1,19 @@
+{
+    "featuredCases": [
+        {
+            "title": "Terminsprøve",
+            "education": "Webudvikler, Hovedforløb",
+            "image": "/assets/caseImages/terminsprove.png",
+            "date": "2021",
+            "description": "Det her skal være en kort description af mit projekt",
+            "githubLink": "https://github.com/rts-cmk-wu04/terminsprove-M1quel",
+            "siteLink": "https://fitness-verden-mf.netlify.app/"
+        },
+        {
+            
+        }
+    ],
+    "cases": [
+
+    ]
+}

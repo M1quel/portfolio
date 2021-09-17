@@ -1,14 +1,72 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
+import moveCV from '../helpers/moveCV';
+import { moveElement } from '../helpers/moveElement';
+import moveProfile from '../helpers/moveProfile';
 import Education from './components/Education'
 import Language from './components/Language'
 import "./CV.scss";
 
-export default function Cv(props) {
+export default function Cv(scrollState) {
+    var cvRef = useRef();
+    var offset = 1500;
+    var length = 500;
+    var backGroundOffset = offset + length + 200;
+    var backGroundLength = 500;
+    var fullScreenHeight = window.innerHeight;
+    var fullScreenWidth = window.innerWidth;
+    var [profileStart, setProfileStart] = useState({})
+    var [cvContentStart, setCvContentStart] = useState({})
+
+    //Definer faste værdier herunder
+    useEffect(function () {
+        var cv = cvRef.current;
+        var profileImg = cv.querySelector(".cvInner__profile");
+        var cvContent = cv.querySelector(".cvContent");
+
+        setProfileStart(profileImg.getBoundingClientRect());
+        setCvContentStart(cvContent.getBoundingClientRect());
+    }, [])
+
+    //Konverter til absolute
+    useEffect(function () {
+        if(!profileStart.left) return
+        var cv = cvRef.current;
+        //Fullscreen profile IMG
+        var profileImg = cv.querySelector(".cvInner__profile");
+        profileImg.style.zIndex = "1"
+        profileImg.style.position = "absolute";
+        profileImg.style.left = "0";
+        profileImg.style.top = "0";
+        profileImg.style.height = "100vh";
+        profileImg.style.width = "100vw";
+
+
+        //cvContent
+        var cvContent = cv.querySelector(".cvContent");
+        cvContent.style.position = "absolute";
+        cvContent.style.height = cvContentStart.height + "px";
+        cvContent.style.width = cvContentStart.width + "px";
+        cvContent.style.left = cvContentStart.left + "px";
+        cvContent.style.top = cvContentStart.top + "px";
+
+    }, [profileStart.left])
+
+    useEffect(function () {
+        var cv = cvRef.current;
+        var profileImg = cv.querySelector(".cvInner__profile");
+        var cvContent = cv.querySelector(".cvContent")
+        if(scrollState.state > offset - 100) {
+            moveProfile(scrollState.state, offset, length, profileImg, profileStart, fullScreenHeight, fullScreenWidth, cvContent)
+        }
+        if(scrollState.state > backGroundOffset - 100) {
+            moveCV(cv, scrollState.state, backGroundOffset, backGroundLength, fullScreenHeight, fullScreenWidth);
+        }
+    }, [scrollState.state])
 
     return (
-        <section className="cv">
+        <section ref={cvRef} className="cv">
             <div className="cvInner">
-                <img className="cvInner__profile" src="https://via.placeholder.com/100.png" alt=""/>
+                <img className="cvInner__profile" src="./profilbillede.jpg" alt=""/>
                 <span className="cvInner__seperator"></span>
                 <div className="cvContent">
                     <header className="cvContentHeader">

@@ -8,6 +8,7 @@ export default function Landing(scrollState) {
     const landingRef = useRef()
     var length = 1500;
     
+    
     var [siteTitleStart, setSiteTitleStart] = useState({})
     var [seperatorStart, setSeperatorStart] = useState({})
     var [socialsStart, setSocialsStart] = useState({})
@@ -16,7 +17,8 @@ export default function Landing(scrollState) {
     
     //Definer faste værdier her under
     useEffect(function() {
-        var landing = landingRef.current
+        var landing = landingRef.current;
+        
         var siteTitle = landing.querySelector(".inner__siteTitle")
         var seperator = landing.querySelector(".inner__seperator")
         var socials = landing.querySelector(".socials")
@@ -43,6 +45,12 @@ export default function Landing(scrollState) {
     //Koden der rykker elementer her
     useEffect(function() {
         var landing = landingRef.current;
+        if(scrollState.state > length) {
+            landing.style.visibility = "hidden";
+        } else {
+            landing.style.visibility = "visible";
+
+        }
         var siteTitle = landing.querySelector(".inner__siteTitle")
         var socials = landing.querySelector(".socials")
         var seperator = landing.querySelector(".inner__seperator")
