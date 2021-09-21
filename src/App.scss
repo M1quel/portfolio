@@ -7,18 +7,3 @@
   list-style: none;
   text-decoration: none;
 }
-html, body {
-  scroll-behavior: smooth;
-}
-body {
-  overflow: scroll;
-}
-::-webkit-scrollbar {
-  display: none;
-}
-#root {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
